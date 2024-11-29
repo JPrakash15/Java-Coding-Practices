@@ -3,11 +3,11 @@ import java.util.Arrays;
 public class InsertionSort {
     public static void main(String[] args) {
         int[] arr={4,5,0,3,2,1};
-        InsertionSort(arr);
-//        System.out.println(Arrays.toString(InsertionSort(arr)));
+        insertionSort(arr);
+        System.out.println(Arrays.toString(arr));
     }
 
-    public static void InsertionSort(int[] arr){
+    public static void insertionSort(int[] arr){
 //        int start=0;
         for(int i=0;i<arr.length-1;i++){
             for(int j=i+1;j>0;j--){
