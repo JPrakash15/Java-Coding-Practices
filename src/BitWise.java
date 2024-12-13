@@ -3,7 +3,7 @@ public class BitWise {
         int num=68;
         System.out.println(findOddEven(num));
 
-        int[] nums={3,3,3,3};
+        int[] nums={3,3,3,9,4,4,4,5,5,5};
         System.out.println(findUnique(nums));
 
 
@@ -19,6 +19,8 @@ public class BitWise {
         }
 
         System.out.println(ans);
+
+        System.out.println(findUniqueNum(nums));
     }
 
     static boolean findOddEven(int n){
@@ -30,6 +32,25 @@ public class BitWise {
         for(int n:arr){
             unique=unique^n;
         }
+        return unique;
+    }
+
+    static int findUniqueNum(int[] nums){
+        int[] bitCount=new int[32];
+        int unique=0;
+        for(int num:nums){
+            for(int i=0;i<32;i++){
+                if((num &(1<<i))!=0){
+                    bitCount[i]++;
+                }
+            }
+        }
+        for(int i=0;i<32;i++){
+            if(bitCount[i]%3!=0){
+                unique=unique|(1<<i);
+            }
+        }
+
         return unique;
     }
 }
