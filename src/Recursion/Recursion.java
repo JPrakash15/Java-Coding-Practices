@@ -7,8 +7,9 @@ public class Recursion {
         System.out.println(find(unSortArr,18,0));
         System.out.println(isSorted(sortArr,0));
         System.out.println(isSorted(unSortArr,0));
+        System.out.println(findIndex(unSortArr,18,6));
     }
-//    Q1:Find an elament in unsorted array
+//    Q1:Find an element in unsorted array
     static boolean find(int[] arr, int target, int index){
         if(index==arr.length){
             return false;
@@ -22,6 +23,18 @@ public class Recursion {
             return true;
         }
         return arr[index]<arr[index+1] && isSorted(arr,index+1);
+    }
+
+//  Q3:Find the index of the target
+static int findIndex(int[] arr, int target, int index){
+        if(index<=-1){
+            return -1;
+        }
+
+        if(arr[index]==target){
+            return index;
+        }
+        return findIndex(arr,target,index-1);
     }
 
 }
