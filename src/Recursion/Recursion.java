@@ -1,13 +1,23 @@
 package Recursion;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Recursion {
     public static void main(String[] args) {
         int[] unSortArr={2,6,3,8,18,9,16};
         int[] sortArr={1,3,6,9,13,14,99};
+        int[] ssortArr={1,2,6,3,6,4,3,9,8,3};
         System.out.println(find(unSortArr,18,0));
         System.out.println(isSorted(sortArr,0));
         System.out.println(isSorted(unSortArr,0));
         System.out.println(findIndex(unSortArr,18,6));
+        findAllIndex(ssortArr,3,0);
+        System.out.println(list);
+        ArrayList<Integer> list2 = new ArrayList<>();
+        findAllIndices(ssortArr,3,0,list2);
+        System.out.println(list2);
+        System.out.println(list==list2);
     }
 //    Q1:Find an element in unsorted array
     static boolean find(int[] arr, int target, int index){
@@ -35,6 +45,32 @@ static int findIndex(int[] arr, int target, int index){
             return index;
         }
         return findIndex(arr,target,index-1);
+    }
+
+
+    static List<Integer> list = new ArrayList<>();
+    static void findAllIndex(int[] arr, int target, int index){
+
+        if(index==arr.length){
+            return;
+        }
+
+        if(arr[index]==target){
+            list.add(index);
+        }
+        findAllIndex(arr,target,index+1);
+    }
+
+//    Q: Return all the indices of target in list
+    static ArrayList findAllIndices(int[] arr, int target, int index, ArrayList list){
+//        List<Integer> list2=new ArrayList<>();
+        if(index==arr.length){
+            return list;
+        }
+        if(arr[index]==target){
+            list.add(index);
+        }
+        return findAllIndices(arr,target,index+1,list);
     }
 
 }
