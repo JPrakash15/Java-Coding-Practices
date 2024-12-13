@@ -8,7 +8,7 @@ public class Recursion {
         System.out.println(isSorted(sortArr,0));
         System.out.println(isSorted(unSortArr,0));
     }
-//    Q1:Find an elament in unsorted array
+//    Q1:Find an element in unsorted array
     static boolean find(int[] arr, int target, int index){
         if(index==arr.length){
             return false;
