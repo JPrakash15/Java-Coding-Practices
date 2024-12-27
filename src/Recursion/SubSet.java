@@ -1,13 +1,14 @@
 package Recursion;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class SubSet {
     public static void main(String[] args) {
         String str="abc";
         String sub="";
-        int[] nums={1,2,3};
+        int[] nums={1,2,2};
         skip(str,sub);
 //        System.out.println(skip(str));
 
@@ -18,6 +19,8 @@ public class SubSet {
         subSeqAscii(sub,str);
         System.out.println("\n"+subSeqAsciiList(sub,str));
         System.out.println(subSet(nums));
+        System.out.println("hello");
+        System.out.println(subSetDuplicates(nums));
     }
     static String skip(String up){
         String p="";
@@ -122,5 +125,28 @@ public class SubSet {
         }
 
         return result;
+    }
+//
+    static List<List<Integer>> subSetDuplicates(int[] nums){
+        Arrays.sort(nums);
+        List<List<Integer>> outer=new ArrayList<>();
+        outer.add(new ArrayList<>());
+        int start,end=0;
+        for(int i=0;i<nums.length;i++){
+            start=0;
+//
+            if(i>0 && nums[i]==nums[i-1]){
+                start=end+1;
+            }
+
+            end=outer.size()-1;
+            int size=outer.size();
+            for(int j=start;j<size;j++){
+                ArrayList<Integer> inner=new ArrayList<>(outer.get(j));
+                inner.add(nums[i]);
+                outer.add(inner);
+            }
+        }
+        return outer;
     }
 }
