@@ -7,9 +7,9 @@ public class SubSet {
     public static void main(String[] args) {
         String str="abc";
         String sub="";
-        int[] nums={1,2,3};
+        int[] nums={1,2,2};
         skip(str,sub);
-//        System.out.println(skip(str));
+        System.out.println(skip(str));
 
         String str1="bcaabcbcd";
         System.out.println(skipApple(str1));
@@ -17,6 +17,7 @@ public class SubSet {
         System.out.println("\n"+subSeqList(sub,str));
         subSeqAscii(sub,str);
         System.out.println("\n"+subSeqAsciiList(sub,str));
+        System.out.println(subSetDup(nums));
         System.out.println(subSet(nums));
     }
     static String skip(String up){
@@ -108,19 +109,39 @@ public class SubSet {
     }
 //
     static List<List<Integer>> subSet(int[] nums){
-        List<List<Integer>> result = new ArrayList<>();
-
-        result.add(new ArrayList<>());
-
+        List<List<Integer>> outer =new ArrayList<>();
+        outer.add(new ArrayList<>());
         for(int num:nums){
-            int n= result.size();
+            int n=outer.size();
             for(int i=0;i<n;i++){
-                List<Integer> inner =new ArrayList<>(result.get(i));
-                 inner.add(num);
-                 result.add(inner);
+                List<Integer> inner=new ArrayList<>(outer.get(i));
+                inner.add(num);
+                outer.add(inner);
             }
         }
 
-        return result;
+        return outer;
+    }
+
+    static List<List<Integer>> subSetDup(int[] nums){
+        List<List<Integer>> outer =new ArrayList<>();
+        outer.add(new ArrayList<>());
+        int start,end=0;
+        for(int i=0;i<nums.length;i++){
+            start=0;
+//            if my current element is equal to previous element
+            if(i>0 && nums[i]==nums[i-1]){
+                start=end+1;
+            }
+            end=outer.size()-1;
+            int n=outer.size();
+            for(int j=start;j<n;j++){
+                List<Integer> inner=new ArrayList<>(outer.get(j));
+                inner.add(nums[i]);
+                outer.add(inner);
+            }
+        }
+
+        return outer;
     }
 }

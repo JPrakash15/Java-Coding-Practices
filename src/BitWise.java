@@ -1,26 +1,16 @@
 public class BitWise {
     public static void main(String[] args) {
-        int num=68;
+        int num=67;
         System.out.println(findOddEven(num));
-
         int[] nums={3,3,3,9,4,4,4,5,5,5};
         System.out.println(findUnique(nums));
-
-
         int n=8;
-
         System.out.println(findMagicNum(n));
-
         System.out.println(findUniqueNum(nums));
-
         System.out.println(findNumOfDigits(n));
-
         System.out.println(sumOfnthrow(n));
-
         printPascalTriangle(n);
-
         System.out.println(isPowerOf2(n));
-
         System.out.println(PowerOf(3,6));
     }
 
@@ -95,9 +85,12 @@ public class BitWise {
             System.out.println();
         }
     }
+
     static boolean isPowerOf2(int n){
         return n>0 && (n&(n-1))==0;
     }
+
+
     static int PowerOf(int base, int pow){
         int ans=1;
         while(pow>0){
