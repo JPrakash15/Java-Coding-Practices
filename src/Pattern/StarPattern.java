@@ -9,7 +9,6 @@ public class StarPattern {
         pattern3(n);
         pattern4(n);
         pattern5(n);
-        pattern6(n);
     }
 //    *****
 //    *****
@@ -50,19 +49,6 @@ public class StarPattern {
             System.out.println();
         }
     }
-//    1
-//    12
-//    123
-//    1234
-//    12345
-    static void pattern4(int n){
-        for(int i=1;i<=n;i++){
-            for(int j=1;j<=i;j++){
-                System.out.print(j);
-            }
-            System.out.println();
-        }
-    }
 //    *
 //    **
 //    ***
@@ -72,7 +58,7 @@ public class StarPattern {
 //    ***
 //    **
 //    *
-    static void pattern5(int n){
+    static void pattern4(int n){
         for(int i=1;i<n*2;i++){
             int c=i>n?(n-(i-n)):i;
             for(int j=1;j<=c;j++){
@@ -87,7 +73,7 @@ public class StarPattern {
 //    ******
 //    **  **
 //    *    *
-    static void pattern6(int n){
+    static void pattern5(int n){
         for(int i=1;i<=n;i++){
             int c=i>n/2?n-i+1:i;
             int s=n-2*c;
