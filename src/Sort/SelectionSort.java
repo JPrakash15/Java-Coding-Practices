@@ -16,15 +16,15 @@ public class SelectionSort {
         }
         return arr;
     }
-//    public static int getMaxIndex(int[] arr, int end){
-//        int max=0;
-//        for(int i=0;i<=end;i++){
-//            if(arr[max]<arr[i]){
-//                max=i;
-//            }
-//        }
-//        return max;
-//    }
+    public static int getMaxIndex(int[] arr, int end){
+        int max=0;
+        for(int i=0;i<=end;i++){
+            if(arr[max]<arr[i]){
+                max=i;
+            }
+        }
+        return max;
+    }
 
     public static int getMinIndex(int[] arr, int end){
         int min=0;
