@@ -1,10 +1,10 @@
 public class BitWise {
     public static void main(String[] args) {
-        int num=67;
+        int num=10;
         System.out.println(findOddEven(num));
         int[] nums={3,3,3,9,4,4,4,5,5,5};
         System.out.println(findUnique(nums));
-        int n=8;
+        int n=4;
         System.out.println(findMagicNum(n));
         System.out.println(findUniqueNum(nums));
         System.out.println(findNumOfDigits(n));
@@ -12,6 +12,9 @@ public class BitWise {
         printPascalTriangle(n);
         System.out.println(isPowerOf2(n));
         System.out.println(PowerOf(3,6));
+        System.out.println(ithBitOfNum(2,10));
+        System.out.println(setIthBit(2,10));
+
     }
 
     static boolean findOddEven(int n){
@@ -102,4 +105,12 @@ public class BitWise {
         return ans;
     }
 
+    static int ithBitOfNum(int n,int num){
+        return num&(1<<(n-1));
+    }
+
+//    Set the ith bit
+    static int setIthBit(int n, int num){
+        return num|(1);
+    }
 }
