@@ -2,24 +2,24 @@ import java.util.*;
 
 public class ArrayListDSA {
     public static void main(String[] args) {
-        List<Integer> list= new ArrayList<>(Arrays.asList(1,2,3,4,4,5,6,7));
+        List<Integer> list= new ArrayList<>(Arrays.asList(5,6,4,1,2,3,6,2,1));
         List<Integer> list2=new ArrayList<>(Arrays.asList(2,3,7,8));
+        System.out.println(removeDup(list));
+        System.out.println(sortArrayList(list));
         Set<Integer> newset=new HashSet<>();
         Set<Integer> newSet=new HashSet<>();
         //        list.removeAll(list2);
 //        list2.retainAll(list);
         System.out.println(list2);
 
-        Iterator<Integer> itr=list.iterator();
-        while(itr.hasNext()){
-            int num= itr.next();
-            System.out.println(num);
+        for (int num : list) {
+            //            System.out.println(num);
             newset.add(num);
         }
         Iterator<Integer> it=list2.iterator();
         while(it.hasNext()){
             int num= it.next();
-            System.out.println(num);
+//            System.out.println(num);
             newSet.add(num);
         }
         System.out.println(newset);
@@ -74,5 +74,23 @@ public class ArrayListDSA {
         list.addAll(list2);
         return list;
     }
-
+//    Q3:Remove Duplicates from List
+    static ArrayList<Integer> removeDup(List<Integer> list){
+        Set<Integer> nonDup=new LinkedHashSet<>(list);
+        return new ArrayList<>(nonDup);
+    }
+//    Q4:Sort Arraylist Without using Collections sort
+    static List<Integer> sortArrayList(List<Integer> list){
+        int n=list.size();
+        for(int i=0;i<n;i++){
+            for(int j=i+1;j<n;j++){
+                if(list.get(i)>list.get(j)){
+                    int temp=list.get(i);
+                    list.set(i,list.get(j));
+                    list.set(j,temp);
+                }
+            }
+        }
+        return new ArrayList<Integer>(list);
+    }
 }
