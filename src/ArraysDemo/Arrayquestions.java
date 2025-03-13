@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Arrayquestions {
     public static void main(String[] args) {
-        int[] nums={1,2,3,3,4};
+        int[] nums={3,6,12,5};
         System.out.println(Arrays.toString(runningArrrays(nums)));
         int[] arr={1,2,1};
         System.out.println(Arrays.toString(buildDoubleArray(arr)));
@@ -15,6 +15,7 @@ public class Arrayquestions {
         List<Integer> p = new ArrayList<>(Arrays.asList(4, 3, 7, 5, 6, 4, 2));
         System.out.println("Plants");
         System.out.println(poisnousPlants(p));
+        System.out.println(isGoodArray(nums));
 
     }
 
@@ -103,4 +104,23 @@ public class Arrayquestions {
 //        }
 //        if(sum)
 //    }
+    static boolean isGoodArray(int[] arr){
+        int result =arr[0];
+        for(int i=1;i<arr.length;i++){
+            result= gcd(result,arr[i]);
+
+            if(result==1){
+                return true;
+            }
+        }
+        return result==1;
+    }
+    static int gcd(int a,int b){
+        while(b!=0){
+            int temp =b;
+            b=a%b;
+            a=temp;
+        }
+        return a;
+    }
 }
