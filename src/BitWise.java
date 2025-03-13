@@ -29,11 +29,14 @@ public class BitWise {
         return unique;
     }
 
+    //3,3,3,9,4,4,4,5,5,5
     static int findUniqueNum(int[] nums){
         int[] bitCount=new int[32];
         int unique=0;
+        int flag=0;
         for(int num:nums){
-            for(int i=0;i<32;i++){
+            int noOfBinDigits=Integer.toBinaryString(num).length();
+            for(int i=0;i<noOfBinDigits;i++){
                 if((num &(1<<i))!=0){
                     bitCount[i]++;
                 }
@@ -112,5 +115,10 @@ public class BitWise {
 //    Set the ith bit
     static int setIthBit(int n, int num){
         return num|(1);
+    }
+    static int uniqueNum(int[] nums){
+        int[] bitCount=new int[32];
+
+        return 2;
     }
 }
