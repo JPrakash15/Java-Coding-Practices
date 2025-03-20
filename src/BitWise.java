@@ -13,7 +13,8 @@ public class BitWise {
         System.out.println(isPowerOf2(n));
         System.out.println(PowerOf(3,6));
         System.out.println(ithBitOfNum(2,10));
-        System.out.println(setIthBit(2,10));
+        System.out.println(setIthBit(0,10));
+        System.out.println(uniqueNum(nums));
 
     }
 
@@ -58,7 +59,7 @@ public class BitWise {
         while(n>0){
             int last=n&1;
             n=n>>1;
-            ans*=last*base;
+            ans=ans*last*base;
             base=base*5;
         }
         return ans;
@@ -114,11 +115,34 @@ public class BitWise {
 
 //    Set the ith bit
     static int setIthBit(int n, int num){
-        return num|(1);
+        return num|(1<<n);
+    }
+    static int  magicNum(int n, int num){
+//        int binLen=
+        int ans=0;
+        while(n>0){
+            int last =num&1;
+            n=n>>1;
+            ans=ans*last*n;
+            n=n*n;
+        }
+        return ans;
     }
     static int uniqueNum(int[] nums){
         int[] bitCount=new int[32];
-
-        return 2;
+        for(int num :nums){
+            for(int i=0;i<32;i++){
+                if((num&(1<<i))!=0){
+                    bitCount[i]++;
+                }
+            }
+        }
+        int uniqueNum=0;
+        for(int i=0;i<32;i++){
+            if(bitCount[i]%3!=0){
+                uniqueNum=uniqueNum|(1<<i);
+            }
+        }
+        return uniqueNum;
     }
 }
