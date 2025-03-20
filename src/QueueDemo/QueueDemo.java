@@ -1,3 +1,5 @@
+package QueueDemo;
+
 import java.util.PriorityQueue;
 
 public class QueueDemo {
