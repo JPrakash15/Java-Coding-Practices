@@ -6,8 +6,9 @@ public class MathsForDSA {
         System.out.println(isPrime(6));
         System.out.println(primeNum(27));
         int n=40;
-        boolean[] bool = new boolean[n+1];
-        seive(n,bool);
+//        boolean[] bool = new boolean[n+1];
+//        seive(n,bool);
+        System.out.println(GCD(70,28));
     }
 
     static boolean isPrime(int n) {
@@ -46,5 +47,15 @@ public class MathsForDSA {
                 System.out.print(i+" ");
             }
         }
+    }
+
+    static int GCD(int a, int b){
+//        int c=0;
+        while(b!=0){
+            int c=a%b;
+            a=b;
+            c=a;
+        }
+        return a;
     }
 }
