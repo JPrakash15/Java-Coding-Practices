@@ -5,10 +5,12 @@ public class MathsForDSA {
     public static void main(String[] args) {
         System.out.println(isPrime(6));
         System.out.println(primeNum(27));
-        int n=40;
-//        boolean[] bool = new boolean[n+1];
-//        seive(n,bool);
+        int n=23;
+        boolean[] bool = new boolean[n+1];
+        seive(n);
+        System.out.println();
         System.out.println(GCD(70,28));
+        System.out.println(consecutiveGCD(70,28));
     }
 
     static boolean isPrime(int n) {
@@ -34,16 +36,17 @@ public class MathsForDSA {
         return result;
     }
 
-    static void seive(int n, boolean[] bool) {
-        for(int i=2;i*i<n;i++){
-            if(!bool[i]){
-                for(int j=i*2;j<n;j+=i){
-                    bool[j]=true;
+    static void seive(int n) {
+        boolean[] primes=new boolean[n+1];
+        for(int i=2;i*i<=n;i++){
+            if(!primes[i]){
+                for(int j=i*i;j<=n;j+=i){
+                    primes[j]=true;
                 }
             }
         }
         for (int i=2;i<=n;i++){
-            if(!bool[i]){
+            if(!primes[i]){
                 System.out.print(i+" ");
             }
         }
@@ -54,8 +57,19 @@ public class MathsForDSA {
         while(b!=0){
             int c=a%b;
             a=b;
-            c=a;
+            b=c;
         }
         return a;
+    }
+    static int consecutiveGCD(int a, int b){
+        int t=Math.min(a,b);
+        while (t>=1){
+            if (a % t == 0 && b % t == 0) {
+                return t;
+            }else{
+                t--;
+            }
+        }
+        return 1;
     }
 }

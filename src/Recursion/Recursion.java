@@ -23,7 +23,7 @@ public class Recursion {
         System.out.println(list==list);
 
         System.out.println(findAllIndex2(ssortArr,6,0));
-
+        System.out.println(countPath(3,4));
     }
 //    Q1:Find an element in unsorted array
     static boolean find(int[] arr, int target, int index){
@@ -92,5 +92,13 @@ static int findIndex(int[] arr, int target, int index){
         list.addAll(ansFromBelow);
         return list;
     }
-
+//    Q:find the no of paths
+    static int countPath(int r, int c){
+        if(r==1||c==1){
+            return 1;
+        }
+        int left=countPath(r-1,c);
+        int  right=countPath(r,c-1);
+        return left+right;
+    }
 }
