@@ -20,7 +20,6 @@ public class Recursion {
         findAllIndices(ssortArr,3,0,list);
 
         System.out.println(list);
-        System.out.println(list==list);
 
         System.out.println(findAllIndex2(ssortArr,6,0));
         System.out.println(countPath(3,4));
@@ -68,7 +67,7 @@ static int findIndex(int[] arr, int target, int index){
     }
 
 //    Q: Return all the indices of target in list
-    static ArrayList findAllIndices(int[] arr, int target, int index, ArrayList list){
+    static List<Integer> findAllIndices(int[] arr, int target, int index, List<Integer> list){
 //        List<Integer> list2=new ArrayList<>();
         if(index==arr.length){
             return list;
@@ -79,7 +78,7 @@ static int findIndex(int[] arr, int target, int index){
         return findAllIndices(arr,target,index+1,list);
     }
 //    Q:Return thr list dont take it in the argument
-    static ArrayList findAllIndex2(int[] arr, int target, int index){
+    static ArrayList<Integer> findAllIndex2(int[] arr, int target, int index){
         ArrayList<Integer> list =new ArrayList<>();
         if(index== arr.length){
             return list;
