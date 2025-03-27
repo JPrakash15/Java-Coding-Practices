@@ -22,7 +22,10 @@ public class Recursion {
         System.out.println(list);
 
         System.out.println(findAllIndex2(ssortArr,6,0));
-        System.out.println(countPath(3,4));
+//        System.out.println(countPath(3,4));
+
+        System.out.println(fibo(10));
+        fiboSeries(10);
     }
 //    Q1:Find an element in unsorted array
     static boolean find(int[] arr, int target, int index){
@@ -91,13 +94,24 @@ static int findIndex(int[] arr, int target, int index){
         list.addAll(ansFromBelow);
         return list;
     }
-//    Q:find the no of paths
-    static int countPath(int r, int c){
-        if(r==1||c==1){
-            return 1;
+
+//    Q:generate fibonacci series
+    static int fibo(int n){
+        if(n<=1){
+            return n;
+        }else{
+            return fibo(n-2)+fibo(n-1);
         }
-        int left=countPath(r-1,c);
-        int  right=countPath(r,c-1);
-        return left+right;
     }
+
+    static void fiboSeries(int n){
+        for(int i=0;i<n;i++){
+            if(i<=1){
+                System.out.println(i);
+            }else{
+                System.out.println(fibo(i-2)+fibo(i-1));
+            }
+        }
+    }
+
 }
