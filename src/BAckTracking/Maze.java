@@ -10,13 +10,17 @@ public class Maze {
         System.out.println(countPathDiagnol(3,3));
         System.out.println(findPathDiagnolReturn("",3,3));
         boolean[][] maze={
-                {true,true,false},
                 {true,true,true},
-                {false,true,true},
+                {true,true,true},
+                {true,true,true},
         };
         findPathObstacle("",maze, 0, 0);
         System.out.println(findPathObstacleReturn("",maze,0,0));
         System.out.println(findPathDiagnolObstacleReturn("",maze,0,0));
+        System.out.println(allPathReturn("",maze,0,0));
+        System.out.println(queenDirections("",maze,0,0));
+        ArrayList result=queenDirections("",maze,0,0);
+        System.out.println(result.size());
     }
     //    Q:find the no of paths
     static int countPath(int r, int c){
@@ -142,6 +146,78 @@ public class Maze {
         if(r< maze.length-1 && c<maze[0].length-1){
             list.addAll(findPathDiagnolObstacleReturn(p+"D",maze,r+1,c+1));
         }
+        return list;
+    }
+    static ArrayList<String> allPathReturn(String p, boolean[][] maze, int r, int c){
+    if(r== maze.length-1 && c==maze[0].length-1){
+        ArrayList<String> list=new ArrayList<>();
+        list.add(p);
+        return list;
+    }
+    ArrayList<String> list =new ArrayList<>();
+    if(!maze[r][c]){
+        return list;
+    }
+    maze[r][c]=false;
+    if(r<maze.length-1){
+        list.addAll(allPathReturn(p+"R",maze,r+1,c));
+    }
+    if(c<maze[0].length-1){
+        list.addAll(allPathReturn(p+"D",maze,r,c+1));
+    }
+    if(r>0){
+        list.addAll(allPathReturn(p+"L",maze,r-1,c));
+    }
+    if(c>0){
+        list.addAll(allPathReturn(p+"T",maze,r,c-1));
+    }
+    maze[r][c]=true;
+    return list;
+    }
+    static ArrayList<String> queenDirections(String p, boolean[][] maze, int r, int c){
+        if(r== maze.length-1 && c==maze[0].length-1){
+            ArrayList<String> list=new ArrayList<>();
+            list.add(p);
+            return list;
+        }
+        ArrayList<String> list =new ArrayList<>();
+        if(!maze[r][c]){
+            return list;
+        }
+        maze[r][c]=false;
+        //MoveDown
+        if(r<maze.length-1){
+            list.addAll(queenDirections(p+"Dw",maze,r+1,c));
+        }
+        //moveRight
+        if(c<maze[0].length-1){
+            list.addAll(queenDirections(p+"Rg",maze,r,c+1));
+        }
+        //moveUp
+        if(r>0){
+            list.addAll(queenDirections(p+"Up",maze,r-1,c));
+        }
+        //MoveLeft
+        if(c>0){
+            list.addAll(queenDirections(p+"Lf",maze,r,c-1));
+        }
+        //Move DiagnolRightDown
+        if(r<maze.length-1 && c<maze[0].length-1){
+            list.addAll(queenDirections(p+"Rd",maze,r+1,c+1));
+        }
+        //Move DiagnolRightUp
+        if(r>0 && c<maze[0].length-1){
+            list.addAll(queenDirections(p+"Ru",maze,r-1,c+1));
+        }
+        //Move Diagnol LeftUp
+        if(r>0 && c>0){
+            list.addAll(queenDirections(p+"Lu",maze,r-1,c-1));
+        }
+        //Move Diagnol LeftDown
+        if(r<maze.length-1 && c>0){
+            list.addAll(queenDirections(p+"Ld",maze,r+1,c-1));
+        }
+        maze[r][c]=true;
         return list;
     }
 }
