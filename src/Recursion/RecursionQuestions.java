@@ -8,7 +8,7 @@ public class RecursionQuestions {
     printSumofTriangleofArray(arr);
     }
     static void printSumofTriangleofArray(int[] arr){
-        if(arr.length==1){
+        if(arr.length<1){
             return;
         }
         int[] temp=new int[arr.length-1];
