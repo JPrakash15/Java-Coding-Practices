@@ -53,7 +53,7 @@ public class LL {
             System.out.print(temp.value+" -> ");
             temp =temp.next;
         }
-        System.out.print("END ");
+        System.out.print("END\n");
     }
     public void insert(int val, int index) throws IndexOutOfBoundsException{
         if (index < 0 || index > size) {
@@ -87,6 +87,7 @@ public class LL {
         size--;
         return val;
     }
+
     public Node get(int index){
         Node node=head;
         for(int i=0;i<index;i++){
@@ -94,6 +95,7 @@ public class LL {
         }
         return node;
     }
+
     public int deleteLast(){
         if(size<=0){
             throw new NoSuchElementException("List is Empty");
@@ -119,5 +121,16 @@ public class LL {
         int val = prev.next.value;
         prev.next=prev.next.next;
         return val;
+    }
+
+    public Node find(int value){
+        Node node=head;
+        while(node!=null){
+            if(node.value==value){
+                return node;
+            }
+            node=node.next;
+        }
+        return null;
     }
 }
