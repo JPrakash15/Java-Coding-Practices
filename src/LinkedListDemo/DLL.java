@@ -2,8 +2,14 @@ package LinkedListDemo;
 
 public class DLL {
     private Node head;
-//    private Node tail;
-//    private int size;
+
+    public int  delete(int index) {
+        Node deleteNode=get(index);
+        int val=deleteNode.value;
+        deleteNode.prev.next=deleteNode.next;
+        deleteNode.next.prev=deleteNode.prev;
+        return val;
+    }
 
     private class Node{
         private int value;
@@ -57,6 +63,15 @@ public class DLL {
         System.out.print("null\n");
     }
 
+    public void reversalDisplay(){
+        Node node=getLast();
+        while(node!=null){
+            System.out.print(node.value+" -> ");
+            node=node.prev;
+        }
+        System.out.print("null\n");
+    }
+
     public Node getLast(){
         Node node=head;
         while(node.next!=null) {
@@ -66,10 +81,37 @@ public class DLL {
     }
     public Node get(int index){
         Node node=head;
-        for(int i=1;i<index;i++){
+        for(int i=0;i<index;i++){
             node=node.next;
         }
         return node;
+    }
+    public int deleteFirst(){
+        int val=head.value;
+        head=head.next;
+        head.prev=null;
+        return val;
+    }
+    public int deleteLast(){
+        Node last=getLast();
+        int val=last.value;
+        last.prev.next=null;
+        return val;
+    }
+    public Node find(int val){
+        Node node=head;
+        while(node.value!=val){
+            node=node.next;
+        }
+        return node;
+    }
+    public void insertAfterValue(int insertValue,int afterValue){
+        Node prevNode=find(afterValue);
+        Node node=new Node(insertValue);
+        prevNode.next.prev=node;
+        node.next=prevNode.next;
+        prevNode.next=node;
+        node.prev=prevNode;
     }
 
 }
